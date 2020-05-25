@@ -1,0 +1,20 @@
+body
+{
+    background: lightgrey;
+}
+
+h1
+{
+    color: darkslateblue;
+
+}
+
+table
+{
+    background: azure;
+    border-color: black;
+}
+
+p {
+    color: darkolivegreen;
+}

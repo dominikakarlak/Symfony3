@@ -1,0 +1,87 @@
+<?xml version="1.0"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file source-language="pl" datatype="plaintext" original="file.ext">
+        <body>
+            <trans-unit id="label_actions">
+                <source>label_actions</source>
+                <target>Akcje</target>
+            </trans-unit>
+            <trans-unit id="label_id">
+                <source>label_id</source>
+                <target>Id</target>
+            </trans-unit>
+            <trans-unit id="label_title">
+                <source>label_title</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="label_content">
+                <source>label_content</source>
+                <target>Zawartość</target>
+            </trans-unit>
+            <trans-unit id="label_tags">
+                <source>label_tags</source>
+                <target>Tagi</target>
+            </trans-unit>
+            <trans-unit id="message_empty_list">
+                <source>message_empty_list</source>
+                <target>Pusta lista.</target>
+            </trans-unit>
+            <trans-unit id="title_record_list">
+                <source>title_record_list</source>
+                <target>Lista wyników </target>
+            </trans-unit>
+            <trans-unit id="title_vinyl_details">
+                <source>title_vinyl_details</source>
+                <target>Szczegóły vinylu #%id%</target>
+            </trans-unit>
+            <trans-unit id="title_vinyl_list">
+                <source>title_vinyl_list</source>
+                <target>Lista płyt vinylowych</target>
+            </trans-unit>
+            <trans-unit id="label_created_at" >
+                <source>label_created_at</source>
+                <target>Stworzone </target>
+            </trans-unit>
+            <trans-unit id="label_updated_at" >
+                <source>label_updated_at</source>
+                <target>Edytowane </target>
+            </trans-unit>
+            <trans-unit id="action_view" >
+                <source>action_view</source>
+                <target>Zobacz akcje </target>
+            </trans-unit>
+            <trans-unit id="action_back_to_list" >
+                <source>action_back_to_list</source>
+                <target>Powrót do listy </target>
+            </trans-unit>
+            <trans-unit id="label_category" >
+            <source>label_category</source>
+            <target>Gatunek</target>
+            </trans-unit>
+            <trans-unit id="label_year" >
+                <source>label_year</source>
+                <target>Rok</target>
+            </trans-unit>
+            <trans-unit id="label_description" >
+                <source>label_description</source>
+                <target>Opis</target>
+            </trans-unit>
+            <trans-unit id="label_name_author_list" >
+                <source>name_author_list</source>
+                <target>Lista autorów </target>
+            </trans-unit>
+            <trans-unit id="label_name" >
+                <source>label_name</source>
+                <target>Nazwa</target>
+            </trans-unit>
+            <trans-unit id="name_category_lis" >
+                <source>name_category_list</source>
+                <target>Lista kategorii</target>
+            </trans-unit>
+            <trans-unit id="label_author" >
+                <source>label_author</source>
+                <target>Autor</target>
+            </trans-unit>
+        </body>
+    </file>
+</xliff>

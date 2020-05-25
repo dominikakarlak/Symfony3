@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'name_author_details'|trans({'%id%': author.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'name_author_details'|trans({'%id%': author.id|default('')}) }}</h1>
+    {% if category is defined and category|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label_id'|trans }}</dt>
+            <dd>{{ author.id }}</dd>
+            <dt>{{ 'label_name'|trans }}</dt>
+            <dd>{{  author.name }}</dd>
+        </dl>
+        <p>
+            <a href="{{ url('author_index') }}" title="{{ 'action_back_to_list'|trans }}">
+                {{ 'action_back_to_list'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message_item_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
