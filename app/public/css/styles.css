@@ -1,17 +1,25 @@
 body
 {
-    background: lightgrey;
+    background-image: url(https://www.publicdomainpictures.net/pictures/160000/velka/disque-vinyl-fond-noir.jpg);
+    color: white;
+    font-weight: bold;
 }
+
+
 
 h1
 {
-    color: darkslateblue;
+    color: black;
+    background: lightgrey;
+    opacity: initial;
+    margin: 10px;
+    text-align: center;
 
 }
 
 table
 {
-    background: azure;
+    background: lightgray;
     border-color: black;
 }
 

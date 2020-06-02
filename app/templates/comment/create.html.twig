@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'comment_create'|trans }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'comment_create'|trans }}</h1>
+    {{ form_start(form, { method: 'POST', action: url('comment_create') }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action_save'|trans }}" class="btn btn-primary" />
+    </div>
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('vinyl_show',{'id': vinylId}) }}" class="btn btn-primary">
+            {{ 'action_back_to_list'|trans }}
+        </a>
+
+       <a>
+
+
+       {{ 'action_back_to_list'|trans }}
+        </a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+

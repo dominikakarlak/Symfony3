@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>{{ 'name_author_details'|trans({'%id%': author.id|default('')}) }}</h1>
-    {% if category is defined and category|length %}
+    {% if author is defined and author|length %}
         <dl class="dl-horizontal">
             <dt>{{ 'label_id'|trans }}</dt>
             <dd>{{ author.id }}</dd>

@@ -1,26 +1,26 @@
 <?php
 /**
- * Category repository.
+ * Comment repository.
  */
 
 namespace App\Repository;
 
-use App\Entity\Category;
-use App\Form\CategoryType;
+use App\Entity\Comment;
+use App\Form\CommentType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class CategoryRepository.
+ * Class CommentRepository.
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Comment|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Comment|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Comment[]    findAll()
+ * @method Comment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class CommentRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -34,13 +34,13 @@ class CategoryRepository extends ServiceEntityRepository
     const PAGINATOR_ITEMS_PER_PAGE = 3;
 
     /**
-     * CategoryRepository constructor.
+     * CommentRepository constructor.
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Comment::class);
     }
 
     /**
@@ -51,7 +51,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('category.id', 'DESC');
+            ->orderBy('comment.createdAt', 'DESC');
     }
 
     /**
@@ -63,73 +63,52 @@ class CategoryRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('comment');
     }
 
     /**
      * Create action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Repository\CategoryRepository        $categoryRepository Category repository
+     * @param \App\Repository\CommentRepository        $commentRepository Comment repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      *
-     * @Route(
-     *     "/create",
-     *     methods={"GET", "POST"},
-     *     name="category_create",
-     * )
-     */
-    public function create(Request $request, CategoryRepository $categoryRepository): Response
-    {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
-        $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-
-            $categoryRepository->save($category);
-
-            return $this->redirectToRoute('category_index');
-        }
-
-        return $this->render(
-            'category/create.html.twig',
-            ['form' => $form->createView()]
-        );
-    }
 
 
     /**
      * Save record.
      *
-     * @param \App\Entity\Category $category Category entity
+     * @param \App\Entity\Comment $comment Comment entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Category $category): void
+    public function save(Comment $comment): void
     {
-        $this->_em->persist($category);
-        $this->_em->flush($category);
+        $this->_em->persist($comment);
+        $this->_em->flush($comment);
     }
 
     /**
      * Delete record.
      *
-     * @param \App\Entity\Category $category Category entity
+     * @param \App\Entity\Comment $comment Comment entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(Category $category): void
+    public function delete(Comment $comment): void
     {
-        $this->_em->remove($category);
-        $this->_em->flush($category);
+        $this->_em->remove($comment);
+        $this->_em->flush($comment);
     }
+
+
 
 
 

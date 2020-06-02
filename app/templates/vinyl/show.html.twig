@@ -20,6 +20,34 @@
             <dd>{{  vinyl.category.name }}</dd>
             <dt>{{ 'label_author'|trans }}</dt>
             <dd>{{  vinyl.author.name }}</dd>
+            <dt>{{ 'label_tags' }}</dt>
+            <dd>
+                {%  for tag in vinyl.tags %}
+                    {{ tag.title }}
+                {%  endfor %}
+
+            </dd>
+
+
+            <dt>{{ 'label_comments' }}</dt>
+            <dd>
+                {%  for comment in vinyl.comments %}
+                {{ comment.text }}
+                {{ comment.createdAt|date }}
+
+                {% endfor %}
+
+                <a href="{{ url('comment_create', {id: vinyl.id}) }}">
+                    <svg class="bi bi-plus-circle-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
+                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
+                    </svg> </a>
+
+            </dd>
+
+
+
+
+
         </dl>
         <p>
             <a href="{{ url('vinyl_index') }}" title="{{ 'action_back_to_list'|trans }}">

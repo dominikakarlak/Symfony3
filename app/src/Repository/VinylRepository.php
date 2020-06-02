@@ -43,6 +43,33 @@ class VinylRepository extends ServiceEntityRepository
     }
 
     /**
+     * Save record.
+     *
+     * @param \App\Entity\Vinyl $vinyl Vinyl entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Vinyl $vinyl): void
+    {
+        $this->_em->persist($vinyl);
+        $this->_em->flush($vinyl);
+    }
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Vinyl $vinyl Task entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Vinyl $vinyl): void
+    {
+        $this->_em->remove($vinyl);
+        $this->_em->flush($vinyl);
+    }
+    /**
      * Query all records.
      *
      * @return \Doctrine\ORM\QueryBuilder Query builder

@@ -1,26 +1,26 @@
 <?php
 /**
- * Category repository.
+ * Tag repository.
  */
 
 namespace App\Repository;
 
-use App\Entity\Category;
-use App\Form\CategoryType;
+use App\Entity\Tag;
+use App\Form\TagType;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 
 /**
- * Class CategoryRepository.
+ * Class TagRepository.
  *
- * @method Category|null find($id, $lockMode = null, $lockVersion = null)
- * @method Category|null findOneBy(array $criteria, array $orderBy = null)
- * @method Category[]    findAll()
- * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Tag|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Tag|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Tag[]    findAll()
+ * @method Tag[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class TagRepository extends ServiceEntityRepository
 {
     /**
      * Items per page.
@@ -34,13 +34,13 @@ class CategoryRepository extends ServiceEntityRepository
     const PAGINATOR_ITEMS_PER_PAGE = 3;
 
     /**
-     * CategoryRepository constructor.
+     * TagRepository constructor.
      *
      * @param \Doctrine\Common\Persistence\ManagerRegistry $registry Manager registry
      */
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Category::class);
+        parent::__construct($registry, Tag::class);
     }
 
     /**
@@ -51,7 +51,7 @@ class CategoryRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('category.id', 'DESC');
+            ->orderBy('tag.id', 'DESC');
     }
 
     /**
@@ -63,14 +63,14 @@ class CategoryRepository extends ServiceEntityRepository
      */
     private function getOrCreateQueryBuilder(QueryBuilder $queryBuilder = null): QueryBuilder
     {
-        return $queryBuilder ?? $this->createQueryBuilder('category');
+        return $queryBuilder ?? $this->createQueryBuilder('tag');
     }
 
     /**
      * Create action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Repository\CategoryRepository        $categoryRepository Category repository
+     * @param \App\Repository\TagRepository        $tagRepository Tag repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
@@ -80,24 +80,24 @@ class CategoryRepository extends ServiceEntityRepository
      * @Route(
      *     "/create",
      *     methods={"GET", "POST"},
-     *     name="category_create",
+     *     name="tag_create",
      * )
      */
-    public function create(Request $request, CategoryRepository $categoryRepository): Response
+    public function create(Request $request, TagRepository $tagRepository): Response
     {
-        $category = new Category();
-        $form = $this->createForm(CategoryType::class, $category);
+        $tag = new Tag();
+        $form = $this->createForm(TagType::class, $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            $categoryRepository->save($category);
+            $tagRepository->save($tag);
 
-            return $this->redirectToRoute('category_index');
+            return $this->redirectToRoute('tag_index');
         }
 
         return $this->render(
-            'category/create.html.twig',
+            'tag/create.html.twig',
             ['form' => $form->createView()]
         );
     }
@@ -106,29 +106,29 @@ class CategoryRepository extends ServiceEntityRepository
     /**
      * Save record.
      *
-     * @param \App\Entity\Category $category Category entity
+     * @param \App\Entity\Tag $tag Tag entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function save(Category $category): void
+    public function save(Tag $tag): void
     {
-        $this->_em->persist($category);
-        $this->_em->flush($category);
+        $this->_em->persist($tag);
+        $this->_em->flush($tag);
     }
 
     /**
      * Delete record.
      *
-     * @param \App\Entity\Category $category Category entity
+     * @param \App\Entity\Tag $tag Tag entity
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
      */
-    public function delete(Category $category): void
+    public function delete(Tag $tag): void
     {
-        $this->_em->remove($category);
-        $this->_em->flush($category);
+        $this->_em->remove($tag);
+        $this->_em->flush($tag);
     }
 
 

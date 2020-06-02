@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'comment_details'|trans({'%id%': comment.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'comment_details'|trans({'%id%': comment.id|default('')}) }}</h1>
+    {% if category is defined and category|length %}
+        <dl class="dl-horizontal">
+            <dt>{{ 'label_id'|trans }}</dt>
+            <dd>{{ comment.id }}</dd>
+            <dt>{{ 'label_text'|trans }}</dt>
+            <dd>{{  comment.text }}</dd>
+            <dt>{{ 'label_createdAt'|trans }}</dt>
+            <dd>{{  comment.createdAt }}</dd>
+
+
+        </dl>
+        <p>
+            <a href="{{ url('comment_index') }}" title="{{ 'action_back_to_list'|trans }}">
+                {{ 'action_back_to_list'|trans }}
+            </a>
+        </p>
+    {% else %}
+        <p>
+            {{ 'message_item_not_found'|trans }}
+        </p>
+    {% endif %}
+{% endblock %}
+
+
+EDIT
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'comment_edit'|trans({'%id%': comment.id|default('')}) }}
+{% endblock %}
+
+{% block body %}
+    <h1>{{ 'comment_edit'|trans({'%id%': comment.id|default('')}) }}</h1>
+    {{ form_start(form, { method: 'PUT', action: url('comment_edit', {id: comment.id}) }) }}
+    {{ form_widget(form) }}
+    <div class="form-group row float-sm-right">
+        <input type="submit" value="{{ 'action_save'|trans }}" class="btn btn-primary" />
+    </div>
+    <div class="form-group row float-sm-left">
+        <a href="{{ url('comment_index') }}" class="btn btn-link">
+            {{ 'action_back_to_list'|trans }}
+        </a>
+    </div>
+    {{ form_end(form) }}
+{% endblock %}
+
+
+

@@ -34,6 +34,14 @@ class VinylFixtures extends AbstractBaseFixtures implements DependentFixtureInte
                 $vinyl->setCategory($this->getRandomReference('categories'));
                 $vinyl->setAuthor($this->getRandomReference('authors'));
 
+                $tags = $this-> getRandomReferences(
+                    'tags',
+                    $this->faker->numberBetween(0, 5)
+                );
+
+                foreach($tags as $tag){
+                    $vinyl->addTag($tag);
+                }
                 return $vinyl;
             }
         );
