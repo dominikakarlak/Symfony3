@@ -5,16 +5,13 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
 use App\Entity\Vinyl;
+use App\Form\CommentType;
 use App\Repository\VinylRepository;
+use App\Repository\CommentRepository;
 
 use App\Form\VinylType;
-
-
-
-use Doctrine\DBAL\Types\DateType;
-use Doctrine\DBAL\Types\TextType;
-use phpDocumentor\Reflection\DocBlock\Description;
 
 use phpDocumentor\Reflection\Types\String_;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -33,6 +30,46 @@ use Knp\Component\Pager\PaginatorInterface;
  */
 class VinylController extends AbstractController
 {
+    /**
+     * Show action.
+     *
+     * @param Request $request
+     * @param VinylRepository $vinylRepository
+     * @param Comment $comment
+     * @param $commentRepository
+     * @param int $id
+     * @return \Symfony\Component\HttpFoundation\Response HTTP response
+     *
+     * @throws \Exception
+     * @Route(
+     *     "/{id}",
+     *     methods={"GET", "POST" },
+     *     name="vinyl_show",
+     *     requirements={"id": "[1-9]\d*"},
+     * )
+     */
+    public function show(Request $request, VinylRepository $vinylRepository, CommentRepository $commentRepository, int $id): Response
+    {
+        $vinyl= $vinylRepository->find($id);
+
+        $comment= new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form -> handleRequest($request);
+        if ($form->isSubmitted()&& $form->isValid()) {
+            $comment->setVinyl($vinyl);
+            $comment->setCreatedAt(new \DateTime);
+            $commentRepository->save($comment);
+            $this->addFlash('success', "Dodanie nowego komentarza powiodło się");
+
+            return $this->redirectToRoute('vinyl_show', ['id'=> $id]);
+        }
+        return $this->render(
+            'vinyl/show.html.twig',
+            [
+                'form' => $form->createView(),
+                'vinyl' => $vinyl]
+        );
+    }
     /**
      * Index action.
      *
@@ -61,27 +98,6 @@ class VinylController extends AbstractController
         );
     }
 
-    /**
-     * Show action.
-     *
-     * @param \App\Entity\Vinyl $vinyl Vinyl entity
-     *
-     * @return \Symfony\Component\HttpFoundation\Response HTTP response
-     *
-     * @Route(
-     *     "/{id}",
-     *     methods={"GET"},
-     *     name="vinyl_show",
-     *     requirements={"id": "[1-9]\d*"},
-     * )
-     */
-    public function show(Vinyl $vinyl): Response
-    {
-        return $this->render(
-            'vinyl/show.html.twig',
-            ['vinyl' => $vinyl]
-        );
-    }
 
     /**
      * Create action.

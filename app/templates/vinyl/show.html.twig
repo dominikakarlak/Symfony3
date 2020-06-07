@@ -28,25 +28,32 @@
 
             </dd>
 
-
-            <dt>{{ 'label_comments' }}</dt>
+            <dt>{{ 'Dodaj nowy komentarz' }}</dt>
+            <dd> {{ form_start(form, { method: 'POST', action: url('vinyl_show', {id: vinyl.id}) }) }}
+                {{ form_widget(form) }}
+                <div class="form-group row float-sm-right">
+                    <input type="submit" value="{{ 'Zapisz'|trans }}" class="btn btn-primary" />
+                </div>
+            </dd>
+            <dt>{{ 'Komentarze' }}</dt>
             <dd>
-                {%  for comment in vinyl.comments %}
-                {{ comment.text }}
-                {{ comment.createdAt|date }}
+                <ul class="list-group-flush" >
 
-                {% endfor %}
+                    {% for comment in vinyl.comments %}
+                        <li class="list-group-item">
 
-                <a href="{{ url('comment_create', {id: vinyl.id}) }}">
-                    <svg class="bi bi-plus-circle-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
-                        <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
-                    </svg> </a>
+                            <div class="date">
+                                {{ comment.createdAt|date('Y/m/d') }}<br>
+                            </div>
+                            <div class="comment">
+                            {{ comment.text }}<br>
+                            </div>
+                        </li>
+                    {% endfor %}
+
+                </ul>
 
             </dd>
-
-
-
-
 
         </dl>
         <p>

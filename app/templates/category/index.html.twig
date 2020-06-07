@@ -17,6 +17,7 @@
             <tr>
                 <th>{{ knp_pagination_sortable(pagination, 'label_id'|trans, 'category.id') }}</th>
                 <th>{{ knp_pagination_sortable(pagination, 'label_name'|trans, 'category.name') }}</th>
+                <th> {{ 'label_vinyl' }}</th>
                 <th>{{ 'label_actions'|trans }}</th>
 
             </tr>
@@ -26,6 +27,11 @@
                 <tr>
                     <td>{{ category.id }}</td>
                     <td>{{ category.name }}</td>
+                    <td>
+                        {% for vinyl in category.vinyls %}
+                        {{ vinyl.title }}
+                        {% endfor %}
+                    </td>
                     <td>
                         <a href="{{ url('category_show', {id: category.id}) }}" title="{{ 'action_view'|trans }}">
                             {{ 'action_view'|trans }}

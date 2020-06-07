@@ -6,12 +6,10 @@
 namespace App\Form;
 
 use App\Entity\Comment;
-use Doctrine\DBAL\Types\DateType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
-
 
 /**
  * Class CommentType.
@@ -26,7 +24,7 @@ class CommentType extends AbstractType
      *
      * @see FormTypeExtensionInterface::buildForm()
      *
-     * @param FormBuilderInterface $builder The form builder
+     * @param \Symfony\Component\Form\FormBuilderInterface $builder The form builder
      * @param array                                        $options The options
      */
     public function buildForm(FormBuilderInterface $builder, array $options): void
@@ -35,13 +33,11 @@ class CommentType extends AbstractType
             'text',
             TextType::class,
             [
-                'label' => 'label_text',
+                'label' => 'Zawartość',
                 'required' => true,
                 'attr' => ['max_length' => 1000],
             ]
         );
-
-
     }
 
     /**
@@ -67,4 +63,3 @@ class CommentType extends AbstractType
         return 'comment';
     }
 }
-

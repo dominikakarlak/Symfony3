@@ -13,7 +13,12 @@
             <dt>{{ 'label_title'|trans }}</dt>
             <dd>{{  tag.title }}</dd>
             <dt>{{ 'label_vinyl_title'|trans }}</dt>
-            <dd>{{  tag.vinyl.title }}</dd>
+            <dt>
+                {%  for vinyl in tag.vinyls %}
+                    {{ vinyl.title }}
+                {%  endfor %}
+
+            </dt>
         </dl>
         <p>
             <a href="{{ url('tag_index') }}" title="{{ 'action_back_to_list'|trans }}">

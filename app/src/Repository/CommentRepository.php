@@ -6,7 +6,7 @@
 namespace App\Repository;
 
 use App\Entity\Comment;
-use App\Form\CommentType;
+use App\Controller\VinylController;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Doctrine\ORM\QueryBuilder;

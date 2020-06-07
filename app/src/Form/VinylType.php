@@ -108,7 +108,7 @@ class VinylType extends AbstractType
             [
                 'label' => 'label_year',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['max_length' => 64, 'min_length'=> 4],
             ]
         );
 
