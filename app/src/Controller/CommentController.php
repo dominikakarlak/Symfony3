@@ -39,9 +39,10 @@ class CommentController extends AbstractController
      * @throws \Doctrine\ORM\OptimisticLockException
      *
      * @Route(
-     *     "/create-comment",
-     *     methods={"GET"},
+     *     "/create-comment/{id}",
+     *     methods={"GET", "POST"},
      *     name="comment_create",
+     *     requirements={"id": "[1-9]\d*"},
      *
      * )
      */
@@ -65,31 +66,33 @@ class CommentController extends AbstractController
             'comment/create.html.twig',
             [
                 'form' => $form->createView(),
-                'vinyl.id'=> $vinyl->getId()]
+                'vinyl'=> $vinyl]
         );
     }
+
 
     /**
      * Edit action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Entity\Comment                    $comment          Comment entity
-     * @param \App\Repository\CommentRepository        $commentRepository Comment repository
+     * @param \Symfony\Component\HttpFoundation\Request $request HTTP request
+     * @param \App\Entity\Comment $comment Comment entity
+     * @param \App\Repository\CommentRepository $commentRepository Comment repository
+     *
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *
      * @throws \Doctrine\ORM\ORMException
      * @throws \Doctrine\ORM\OptimisticLockException
-     *
      * @Route(
-     *     "/{id}/edit",
+     *     "/edit-comment/{id}",
      *     methods={"GET", "PUT"},
      *     requirements={"id": "[1-9]\d*"},
      *     name="comment_edit",
      * )
      */
-    public function edit(Request $request, Vinyl $vinyl, CommentRepository $commentRepository): Response
+    public function edit(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
+        $vinyl=$comment->getVinyl();
         $form = $this->createForm(CommentType::class, $comment, ['method' => 'PUT']);
         $form->handleRequest($request);
 
@@ -104,8 +107,10 @@ class CommentController extends AbstractController
         return $this->render(
             'comment/edit.html.twig',
             [
+                'form' => $form->createView(),
+                'comment' => $comment,
+                'vinyl'=> $comment->getVinyl(),
 
-                'form' => $form->createView(), 'vinylId'=> $vinyl->getId()
             ]
         );
     }
@@ -114,7 +119,7 @@ class CommentController extends AbstractController
      * Delete action.
      *
      * @param \Symfony\Component\HttpFoundation\Request $request            HTTP request
-     * @param \App\Entity\Comment              $comment         Comment entity
+     * @param \App\Entity\Comment                      $comment          Comment entity
      * @param \App\Repository\CommentRepository        $commentRepository Comment repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
@@ -129,8 +134,11 @@ class CommentController extends AbstractController
      *     name="comment_delete",
      * )
      */
-    public function delete(Request $request, Vinyl $vinyl, CommentRepository $repository): Response
+    public function delete(Request $request, Comment $comment, CommentRepository $repository): Response
     {
+
+
+        $vinyl=$comment->getVinyl();
 
         $form = $this->createForm(FormType::class, $comment, ['method' => 'DELETE']);
         $form->handleRequest($request);
@@ -150,7 +158,9 @@ class CommentController extends AbstractController
             'comment/delete.html.twig',
             [
                 'form' => $form->createView(),
-                'vinylId'=> $vinyl->getId()
+                'comment' => $comment,
+                'vinyl'=> $comment->getVinyl(),
+
             ]
         );
     }

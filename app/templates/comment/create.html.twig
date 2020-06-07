@@ -6,7 +6,7 @@
 
 {% block body %}
     <h1>{{ 'comment_create'|trans }}</h1>
-    {{ form_start(form, { method: 'POST', action: url('comment_create') }) }}
+    {{ form_start(form, { method: 'POST', action: url('comment_create', {id: vinyl.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">
         <input type="submit" value="{{ 'action_save'|trans }}" class="btn btn-primary" />

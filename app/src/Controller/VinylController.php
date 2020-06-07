@@ -48,26 +48,11 @@ class VinylController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      * )
      */
-    public function show(Request $request, VinylRepository $vinylRepository, CommentRepository $commentRepository, int $id): Response
+    public function show(Request $request, Vinyl $vinyl, CommentRepository $commentRepository, int $id): Response
     {
-        $vinyl= $vinylRepository->find($id);
-
-        $comment= new Comment();
-        $form = $this->createForm(CommentType::class, $comment);
-        $form -> handleRequest($request);
-        if ($form->isSubmitted()&& $form->isValid()) {
-            $comment->setVinyl($vinyl);
-            $comment->setCreatedAt(new \DateTime);
-            $commentRepository->save($comment);
-            $this->addFlash('success', "Dodanie nowego komentarza powiodło się");
-
-            return $this->redirectToRoute('vinyl_show', ['id'=> $id]);
-        }
         return $this->render(
-            'vinyl/show.html.twig',
-            [
-                'form' => $form->createView(),
-                'vinyl' => $vinyl]
+                'vinyl/show.html.twig',
+                ['vinyl' => $vinyl]
         );
     }
     /**
