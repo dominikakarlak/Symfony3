@@ -9,6 +9,7 @@ use App\Entity\Category;
 use App\Form\CategoryType;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -35,6 +36,7 @@ class CategoryController extends AbstractController
      *     "/",
      *     name="category_index",
      * )
+     *
      */
     public function index(Request $request, CategoryRepository $categoryRepository, PaginatorInterface $paginator): Response
     {
@@ -63,6 +65,7 @@ class CategoryController extends AbstractController
      *     name="category_show",
      *     requirements={"id": "[1-9]\d*"},
      * )
+     *
      */
     public function show(Category $category): Response
     {
@@ -88,6 +91,7 @@ class CategoryController extends AbstractController
      *     methods={"GET", "POST"},
      *     name="category_create",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, CategoryRepository $categoryRepository): Response
     {
@@ -128,6 +132,7 @@ class CategoryController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="category_edit",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Category $category, CategoryRepository $categoryRepository): Response
     {
@@ -169,6 +174,7 @@ class CategoryController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="category_delete",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Category $category, CategoryRepository $repository): Response
     {
@@ -178,7 +184,7 @@ class CategoryController extends AbstractController
             return $this->redirectToRoute('category_index');
         }
 
-        $form = $this->createForm(FormType::class, $category, ['method' => 'DELETE']);
+        $form = $this->createForm(CategoryType::class, $category, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE') && !$form->isSubmitted()) {
@@ -191,7 +197,12 @@ class CategoryController extends AbstractController
 
             return $this->redirectToRoute('category_index');
         }
-
-
+        return $this->render(
+            'category/delete.html.twig',
+            [
+                'form' => $form->createView(),
+                'category' => $category,
+            ]
+        );
     }
 }

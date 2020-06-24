@@ -4,9 +4,10 @@ namespace App\Entity;
 
 use App\Repository\CommentRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
- * @ORM\Entity(repositoryClass=CommentRepository::class)
+ * @ORM\Entity(repositoryClass="App\Repository\CommentRepository", repositoryClass=CommentRepository::class)
  * @ORM\Table(name="comments")
  */
 class Comment
@@ -20,11 +21,20 @@ class Comment
 
     /**
      * @ORM\Column(type="text")
+     *
+     * @Assert\Type(type="text")
+     * @Assert\NotBlank
+     * @Assert\Length(
+     *     min="3",
+     *     max="1000",
+     *     )
      */
     private $text;
 
     /**
      * @ORM\Column(type="datetime")
+     *
+     * @Assert\Type(type="\DateTime")
      */
     private $createdAt;
 
@@ -33,6 +43,11 @@ class Comment
      * @ORM\JoinColumn(nullable=false)
      */
     private $vinyl;
+
+    /**
+     * @ORM\ManyToOne(targetEntity=User::class)
+     */
+    private $author;
 
     /**
      * @return int|null
@@ -99,6 +114,18 @@ class Comment
     public function setVinyl(?Vinyl $vinyl): self
     {
         $this->vinyl = $vinyl;
+
+        return $this;
+    }
+
+    public function getAuthor(): ?User
+    {
+        return $this->author;
+    }
+
+    public function setAuthor(?User $author): self
+    {
+        $this->author = $author;
 
         return $this;
     }

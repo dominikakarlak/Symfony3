@@ -1,29 +1,21 @@
 <?php
 /**
- * Tag type.
+ * AdminEmailType type.
  */
 
 namespace App\Form;
 
-
-use App\Entity\Vinyl;
-use App\Entity\Tag;
-use Doctrine\Common\Collections\ArrayCollection;
-use Faker\Provider\Text;
-use Symfony\Component\Form\Extension\Core\Type\DateType;
-
-use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
-
-use Symfony\Component\Form\FormTypeInterface;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 /**
- * Class TagType.
+ * Class EmailType.
  */
-class TagType extends AbstractType
+class AdminEmailType extends AbstractType
 {
     /**
      * Builds the form.
@@ -39,16 +31,14 @@ class TagType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder->add(
-            'title',
-            TextType::class,
+            'email',
+            EmailType::class,
             [
                 'label' => 'label_title',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['max_length' => 255],
             ]
         );
-
-
     }
 
     /**
@@ -58,7 +48,7 @@ class TagType extends AbstractType
      */
     public function configureOptions(OptionsResolver $resolver): void
     {
-        $resolver->setDefaults(['data_class' => Tag::class]);
+        $resolver->setDefaults(['data_class' => User::class]);
     }
 
     /**
@@ -71,6 +61,6 @@ class TagType extends AbstractType
      */
     public function getBlockPrefix(): string
     {
-        return 'tag';
+        return 'user';
     }
 }

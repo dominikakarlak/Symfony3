@@ -11,6 +11,8 @@ use App\Form\CommentType;
 use App\Repository\CommentRepository;
 use App\Repository\VinylRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\Security;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -55,6 +57,7 @@ class CommentController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $comment->setCreatedAt(new \DateTime());
             $comment->setVinyl($vinyl);
+            $comment->setAuthor($this->getUser());
             $commentRepository->save($comment);
 
             $this->addFlash('success', 'message_created_successfully');
@@ -89,6 +92,7 @@ class CommentController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="comment_edit",
      * )
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('EDIT', comment)")
      */
     public function edit(Request $request, Comment $comment, CommentRepository $commentRepository): Response
     {
@@ -133,6 +137,7 @@ class CommentController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="comment_delete",
      * )
+     * @Security("is_granted('ROLE_ADMIN') or is_granted('DELETE', comment)")
      */
     public function delete(Request $request, Comment $comment, CommentRepository $repository): Response
     {

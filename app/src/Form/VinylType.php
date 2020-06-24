@@ -14,9 +14,11 @@ use App\Form\DataTransformer\TagsDataTransformer;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\FormTypeInterface;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
+use Symfony\Component\Intl\DateFormatter\DateFormat\YearTransformer;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
 
@@ -62,7 +64,7 @@ class VinylType extends AbstractType
             [
                 'label' => 'label_title',
                 'required' => true,
-                'attr' => ['max_length' => 64],
+                'attr' => ['max_length' => 255],
             ]
         );
         $builder->add(
@@ -104,11 +106,11 @@ class VinylType extends AbstractType
 
         $builder->add(
             'year',
-            TextType::class,
+            NumberType::class,
             [
                 'label' => 'label_year',
                 'required' => true,
-                'attr' => ['max_length' => 64, 'min_length'=> 4],
+                'attr' => ['max_length' => 4, 'min_length'=> 4],
             ]
         );
 

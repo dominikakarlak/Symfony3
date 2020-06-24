@@ -9,8 +9,36 @@
     {% endblock %}
 </head>
 <body>
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="{{ url('vinyl_index')}}" >Vinyle</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+           <li class="nav-item">
+                <a class="nav-link" href="{{ url('category_index') }}">Kategorie</a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link" href="{{ url('author_index') }}" > Autorzy </a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link " href="{{ url('tag_index')}}">Tagi</a>
+            </li>
+        </ul>
+
+    </div>
+
 {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
-    <div>{{ app.user.email}}</div>
+    <div id="login">{{ app.user.email}}
+        {% if is_granted('ROLE_ADMIN') %}
+            <a href="{{ url('admin_show', {id: app.user.id})}}" title="{{'edit_admin'|trans }}">
+                {{'edit_admin'|trans }}
+            </a>
+        {% endif %}
+    </div>
     <div>
         <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
     </div>
@@ -19,6 +47,7 @@
         <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a>
     </div>
 {% endif %}
+</nav>
 <div class="container-fluid">
     {% for type, messages in app.session.flashBag.all %}
         {% for message in messages %}
@@ -29,9 +58,10 @@
     {% endfor %}
     {% block body %}{% endblock %}
 </div>
+
 {% block javascripts %}
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 {% endblock %}
 

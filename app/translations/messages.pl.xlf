@@ -48,7 +48,7 @@
             </trans-unit>
             <trans-unit id="action_view" >
                 <source>action_view</source>
-                <target>Zobacz akcje </target>
+                <target>Zobacz</target>
             </trans-unit>
             <trans-unit id="action_back_to_list" >
                 <source>action_back_to_list</source>

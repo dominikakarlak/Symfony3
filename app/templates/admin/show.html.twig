@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ 'title_admin'|trans }}{{ admin.email }}
+{% endblock %}
+
+{% block body %}
+    <ul>
+        <li>{{ 'email'|trans }} - {{ admin.email }}
+            <a href="{{ url('admin_email', {id: app.user.id})}}" title="{{'edit_email'|trans }}">
+                {{'edit_email'|trans }}
+            </a>
+        </li>
+        <li>{{ 'password'|trans }}
+            <a href="{{ url('admin_password', {id: app.user.id})}}" title="{{'edit_password'|trans }}">
+                {{'edit_password'|trans }}
+            </a>
+        </li>
+    </ul>
+
+{% endblock %}

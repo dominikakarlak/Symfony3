@@ -41,3 +41,17 @@ app_register
 {
     margin: 10px;
 }
+
+
+#login
+{
+    margin: 10px;
+    color:black;
+;
+}
+
+#register
+{
+    color:white;
+    background: #565656;
+}

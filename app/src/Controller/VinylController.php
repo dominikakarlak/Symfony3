@@ -14,6 +14,7 @@ use App\Repository\CommentRepository;
 use App\Form\VinylType;
 
 use phpDocumentor\Reflection\Types\String_;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 use Symfony\Component\Form\Extension\Core\Type\FormType;
@@ -100,6 +101,7 @@ class VinylController extends AbstractController
      *     methods={"GET", "POST"},
      *     name="vinyl_create",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, VinylRepository $vinylRepository): Response
     {
@@ -138,6 +140,7 @@ class VinylController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="vinyl_edit",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Vinyl $vinyl, VinylRepository $vinylRepository): Response
     {
@@ -178,6 +181,7 @@ class VinylController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="vinyl_delete",
      * )
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Vinyl $vinyl, VinylRepository $vinylRepository): Response
     {

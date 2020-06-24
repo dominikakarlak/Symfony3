@@ -65,4 +65,31 @@ class AuthorRepository extends ServiceEntityRepository
     {
         return $queryBuilder ?? $this->createQueryBuilder('author');
     }
+    /**
+     * Save record.
+     *
+     * @param \App\Entity\Author $author Author entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function save(Author $author): void
+    {
+        $this->_em->persist($author);
+        $this->_em->flush($author);
+    }
+
+    /**
+     * Delete record.
+     *
+     * @param \App\Entity\Author $author Author entity
+     *
+     * @throws \Doctrine\ORM\ORMException
+     * @throws \Doctrine\ORM\OptimisticLockException
+     */
+    public function delete(Author $author): void
+    {
+        $this->_em->remove($author);
+        $this->_em->flush($author);
+    }
 }

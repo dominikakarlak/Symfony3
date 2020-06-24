@@ -46,11 +46,12 @@
                     <li class="list-group-item">
 
                         <div class="date">
-                            {{ comment.createdAt|date('Y/m/d') }}<br>
+                            {{ comment.createdAt|date('Y/m/d') }} | <b>{{ comment.author.email }}</b>
                         </div>
                         <div class="comment">
                             {{ comment.text }}<br>
                         </div>
+                        {% if is_granted("ROLE_ADMIN") or is_granted('EDIT', comment) %}
                         <div>
                             <a href="{{ url('comment_edit', {id: comment.id}) }}" title="{{ 'comment_edit'|trans }}">
                                 <svg class="bi bi-pencil" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
@@ -60,6 +61,8 @@
                             </a>
 
                         </div>
+                        {% endif %}
+                        {% if is_granted("ROLE_ADMIN") or is_granted('DELETE', comment) %}
                         <div>
                             <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'Comment_delete'|trans }}">
                                 <svg class="bi bi-x-circle-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
@@ -68,6 +71,7 @@
                             </a>
 
                         </div>
+                        {% endif %}
                     </li>
                 {% endfor %}
 
