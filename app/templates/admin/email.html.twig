@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block body %}
-    <h1>{{ 'email_password'|trans({'%id%': admin.id|default('')}) }}</h1>
+    <h1>{{ 'email_edit'|trans({'%id%': admin.id|default('')}) }}</h1>
     {{ form_start(form, { method: 'PUT', action: url('admin_email', {id: admin.id}) }) }}
     {{ form_widget(form) }}
     <div class="form-group row float-sm-right">

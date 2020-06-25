@@ -18,7 +18,7 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
            <li class="nav-item">
-                <a class="nav-link" href="{{ url('category_index') }}">Kategorie</a>
+                <a class="nav-link" href="{{ url('category_index') }}">Gatunki</a>
             </li>
 
             <li class="nav-item">
@@ -39,11 +39,11 @@
             </a>
         {% endif %}
     </div>
-    <div>
+    <div id="logout">
         <a href="{{ url('app_logout') }}">{{ 'action_logout'|trans }}</a>
     </div>
 {% else %}
-    <div>
+    <div id="login">
         <a href="{{ url('app_login') }}">{{ 'action_login'|trans }}</a>
     </div>
 {% endif %}

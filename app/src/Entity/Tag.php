@@ -62,7 +62,7 @@ class Tag
      *
      * @ORM\ManyToMany(targetEntity="App\Entity\Vinyl", mappedBy="tags")
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
      */
     private $vinyls;
 

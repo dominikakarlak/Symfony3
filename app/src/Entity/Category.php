@@ -41,12 +41,8 @@ class Category
      *
      * @ORM\Column(type="string", length=64)
      *
-     * @Assert\Type(type="string")
-     * @Assert\NotBlank
-     * @Assert\Length(
-     *     min="3",
-     *     max="64",
-     * )
+     *
+     *
      */
     private $name;
 
@@ -59,10 +55,15 @@ class Category
      *     mappedBy="category"
      * )
      *
-     * @Assert\Type(type="Doctrine\Common\Collections\ArrayCollection")
+     *
      */
     private $vinyls;
 
+    /**
+     * Category constructor.
+     *
+     *
+     */
 
     public function __construct()
     {
@@ -92,6 +93,7 @@ class Category
      * Setter for Name.
      *
      * @param string $name Name
+     * @return Category
      */
     public function setName(string $name): self
     {

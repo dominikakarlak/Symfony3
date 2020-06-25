@@ -59,7 +59,7 @@ class Vinyl
     /**
      * @ORM\Column(type="text")
      *
-     * @Assert\Type(type="text")
+     *
      * @Assert\NotBlank
      * @Assert\Length(
      *     min="3",
@@ -72,7 +72,7 @@ class Vinyl
     /**
      * @ORM\Column(type="integer")
      *
-     * @Assert\Type(type="intiger")
+     * @Assert\Type(type="integer")
      * @Assert\NotBlank
      * @Assert\Length(
      *     min="4",

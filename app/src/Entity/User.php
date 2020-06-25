@@ -65,18 +65,15 @@ class User implements UserInterface
      *     type="string",
      *     length=180,
      *     unique=true,
-     *)
-     * @Assert\Type(type="string")
+     * )
+     *
+     *
      * @Assert\NotBlank
      * @Assert\Length(
-     *     min="8",
-     *     max="255",
-     *  )
-     * @Assert\Email(
-     *     message = "The email '{{ value }}' is not a valid email.",
-     *     checkMX = true
-     * )
-
+     *     min="3",
+     *     max="180",
+     *
+     *)
      *
      */
     private $email;
@@ -85,6 +82,7 @@ class User implements UserInterface
      * Roles.
      *
      * @ORM\Column(type="json")
+     *
      */
     private $roles = [];
 
@@ -96,14 +94,13 @@ class User implements UserInterface
      * @ORM\Column(type="string")
      *
      *
-     * @Assert\Type(type="string")
-     * @Assert\NotBlank
      * @Assert\Length(
-     *     min="8",
-     *     max="64",
-     * )
-
+     *     min="6",
+     *     max="255",
+     *     )
+     *
      */
+
     private $password;
 
     /**

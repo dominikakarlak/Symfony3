@@ -14,6 +14,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 
 class RegistrationFormType extends AbstractType
 {
+    /**
+     * @param FormBuilderInterface $builder
+     * @param array $options
+     */
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
@@ -41,9 +45,16 @@ class RegistrationFormType extends AbstractType
                         'max' => 4096,
                     ]),
                 ],
-            ])
-        ;
+            ]) ;
     }
+
+    /**
+     * Function ConfigureOptions.
+     *
+     * @param OptionsResolver $resolver
+     */
+
+
 
     public function configureOptions(OptionsResolver $resolver)
     {

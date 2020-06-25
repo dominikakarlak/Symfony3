@@ -22,7 +22,7 @@ class Comment
     /**
      * @ORM\Column(type="text")
      *
-     * @Assert\Type(type="text")
+     *
      * @Assert\NotBlank
      * @Assert\Length(
      *     min="3",

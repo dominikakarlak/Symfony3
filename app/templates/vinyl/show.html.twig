@@ -20,7 +20,7 @@
             <dd>{{  vinyl.category.name }}</dd>
             <dt>{{ 'label_author'|trans }}</dt>
             <dd>{{  vinyl.author.name }}</dd>
-            <dt>{{ 'label_tags' }}</dt>
+            <dt>{{ 'Tagi' }}</dt>
             <dd>
                 {%  for tag in vinyl.tags %}
                     {{ tag.title }}
@@ -32,7 +32,7 @@
 
         <dt>{{ 'Komentarze' }}
 
-        <a href="{{ url('comment_create', {id: vinyl.id}) }}" title="{{ 'Comment_create'|trans }}">
+        <a href="{{ url('comment_create', {id: vinyl.id}) }}" title="{{ 'comment_create'|trans }}">
             <svg class="bi bi-plus-circle-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
                 <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zM8.5 4a.5.5 0 0 0-1 0v3.5H4a.5.5 0 0 0 0 1h3.5V12a.5.5 0 0 0 1 0V8.5H12a.5.5 0 0 0 0-1H8.5V4z"/>
             </svg>
@@ -64,7 +64,7 @@
                         {% endif %}
                         {% if is_granted("ROLE_ADMIN") or is_granted('DELETE', comment) %}
                         <div>
-                            <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'Comment_delete'|trans }}">
+                            <a href="{{ url('comment_delete', {id: comment.id}) }}" title="{{ 'comment_delete'|trans }}">
                                 <svg class="bi bi-x-circle-fill" width="2em" height="2em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg" >
                                     <path fill-rule="evenodd" d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-4.146-3.146a.5.5 0 0 0-.708-.708L8 7.293 4.854 4.146a.5.5 0 1 0-.708.708L7.293 8l-3.147 3.146a.5.5 0 0 0 .708.708L8 8.707l3.146 3.147a.5.5 0 0 0 .708-.708L8.707 8l3.147-3.146z"/>
                                 </svg>

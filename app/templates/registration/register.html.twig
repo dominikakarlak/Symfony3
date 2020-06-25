@@ -3,13 +3,13 @@
 {% block title %} Register {% endblock %}
 
 {% block body %}
-    <h1>Register</h1>
+    <h1 id="Register">Rejestracja</h1>
 
     {{ form_start(registrationForm) }}
         {{ form_row(registrationForm.email) }}
         {{ form_row(registrationForm.plainPassword) }}
         {{ form_row(registrationForm.agreeTerms) }}
 
-        <button type="submit" class="btn" id="register">Register</button>
+        <button type="submit" class="btn" id="register">Zarejestruj się</button>
     {{ form_end(registrationForm) }}
 {% endblock %}

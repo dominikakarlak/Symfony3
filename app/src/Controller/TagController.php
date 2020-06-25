@@ -7,9 +7,11 @@ namespace App\Controller;
 
 use App\Entity\Tag;
 
+use App\Form\SingleTagType;
 use App\Form\TagType;
 use App\Repository\TagRepository;
 use Knp\Component\Pager\PaginatorInterface;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\FormType;
 use Symfony\Component\HttpFoundation\Request;
@@ -89,11 +91,13 @@ class TagController extends AbstractController
      *     methods={"GET", "POST"},
      *     name="tag_create",
      * )
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function create(Request $request, TagRepository $tagRepository): Response
     {
         $tag = new Tag();
-        $form = $this->createForm(TagType::class, $tag);
+        $form = $this->createForm(SingleTagType::class, $tag);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -129,10 +133,12 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="tag_edit",
      * )
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function edit(Request $request, Tag $tag, TagRepository $tagRepository): Response
     {
-        $form = $this->createForm(TagType::class, $tag, ['method' => 'PUT']);
+        $form = $this->createForm(SingleTagType::class, $tag, ['method' => 'PUT']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -170,10 +176,12 @@ class TagController extends AbstractController
      *     requirements={"id": "[1-9]\d*"},
      *     name="tag_delete",
      * )
+     *
+     * @IsGranted("ROLE_ADMIN")
      */
     public function delete(Request $request, Tag $tag, TagRepository $tagRepository): Response
     {
-        $form = $this->createForm(FormType::class, $tag, ['method' => 'DELETE']);
+        $form = $this->createForm(SingleTagType::class, $tag, ['method' => 'DELETE']);
         $form->handleRequest($request);
 
         if ($request->isMethod('DELETE') && !$form->isSubmitted()) {

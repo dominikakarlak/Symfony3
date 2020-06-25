@@ -18,10 +18,8 @@
                 <source>label_content</source>
                 <target>Zawartość</target>
             </trans-unit>
-            <trans-unit id="label_tags">
-                <source>label_tags</source>
-                <target>Tagi</target>
-            </trans-unit>
+
+
             <trans-unit id="message_empty_list">
                 <source>message_empty_list</source>
                 <target>Pusta lista.</target>
@@ -38,13 +36,9 @@
                 <source>title_vinyl_list</source>
                 <target>Lista płyt vinylowych</target>
             </trans-unit>
-            <trans-unit id="label_created_at" >
-                <source>label_created_at</source>
-                <target>Stworzone </target>
-            </trans-unit>
-            <trans-unit id="label_updated_at" >
-                <source>label_updated_at</source>
-                <target>Edytowane </target>
+            <trans-unit id="title_tag_list">
+                <source>title_tag_list</source>
+                <target>Tagi</target>
             </trans-unit>
             <trans-unit id="action_view" >
                 <source>action_view</source>
@@ -74,14 +68,244 @@
                 <source>label_name</source>
                 <target>Nazwa</target>
             </trans-unit>
-            <trans-unit id="name_category_lis" >
+            <trans-unit id="name_category_list" >
                 <source>name_category_list</source>
-                <target>Lista kategorii</target>
+                <target>Lista gatunków</target>
             </trans-unit>
             <trans-unit id="label_author" >
                 <source>label_author</source>
                 <target>Autor</target>
             </trans-unit>
+            <trans-unit id="logout" >
+                <source>action_logout</source>
+                <target>wyloguj się</target>
+            </trans-unit>
+            <trans-unit id="login" >
+                <source>action_login</source>
+                <target>Zaloguj się</target>
+            </trans-unit>
+            <trans-unit id="sign" >
+                <source>Please sign in</source>
+                <target>Zaloguj się</target>
+            </trans-unit>
+            <trans-unit id="sign_in" >
+                <source>Sign in</source>
+                <target>zaloguj</target>
+            </trans-unit>
+            <trans-unit id="edit_admin" >
+                <source>edit_admin</source>
+                <target>edytuj</target>
+            </trans-unit>
+            <trans-unit id="delete" >
+                <source>delete</source>
+                <target>usuń</target>
+            </trans-unit>
+            <trans-unit id="edit" >
+                <source>edit</source>
+                <target>edytuj</target>
+            </trans-unit>
+
+            <trans-unit id="label_tags">
+                <source>label_tags</source>
+                <target>tag</target>
+            </trans-unit>
+
+            <trans-unit id="comment_create">
+                <source>comment_create</source>
+                <target>Stwórz komentarz</target>
+            </trans-unit>
+            <trans-unit id="comment_edit">
+                <source>comment_edit</source>
+                <target>Edytuj komentarz</target>
+            </trans-unit>
+            <trans-unit id="comment_delete">
+                <source>comment_delete</source>
+                <target>Usuń komentarz</target>
+            </trans-unit>
+
+            <trans-unit id="title_vinyl_delete">
+                <source>title_vinyl_delete</source>
+                <target>usuń vinyl</target>
+            </trans-unit>
+
+            <trans-unit id="action_save">
+                <source>action_save</source>
+                <target>zapisz</target>
+            </trans-unit>
+            <trans-unit id="title_vinyl_edit">
+                <source>title_vinyl_edit</source>
+                <target>edytuj vinyl</target>
+            </trans-unit>
+
+            <trans-unit id="name_category_details">
+                <source>name_category_details</source>
+                <target>Szczegóły gatunku</target>
+            </trans-unit>
+            <trans-unit id="title_category_delete">
+                <source>title_category_delete</source>
+                <target>Usuń gatunek</target>
+            </trans-unit>
+            <trans-unit id="name_author_details">
+                <source>name_author_details</source>
+                <target>Szczegóły autora</target>
+            </trans-unit>
+            <trans-unit id="name_author_edit">
+                <source>name_author_edit</source>
+                <target>Edytuj autora</target>
+            </trans-unit>
+            <trans-unit id="title_author_delete">
+                <source>title_author_delete</source>
+                <target>Usuń autora</target>
+            </trans-unit>
+            <trans-unit id="name_author_create">
+                <source>name_author_create</source>
+                <target>Dodaj autora</target>
+            </trans-unit>
+            <trans-unit id="message_created_successfully">
+                <source>message_created_successfully</source>
+                <target>Dodano pomyślnie</target>
+            </trans-unit>
+            <trans-unit id="message_updated_successfully">
+                <source>message_updated_successfully</source>
+                <target>Edycja przebiegła pomyślnie</target>
+            </trans-unit>
+            <trans-unit id="message_deleted_successfully">
+                <source>message_deleted_successfully</source>
+                <target>Usunięto</target>
+            </trans-unit>
+            <trans-unit id="name_category_create">
+                <source>name_category_create</source>
+                <target>Dodaj gatunek</target>
+            </trans-unit>
+            <trans-unit id="name_category_edit">
+                <source>name_category_edit</source>
+                <target>Edytuj gatunek</target>
+            </trans-unit>
+
+
+            <trans-unit id="label_none">
+                <source>label_none</source>
+                <target>puste pole</target>
+            </trans-unit>
+            <trans-unit id="title_vinyl_create">
+                <source>title_vinyl_create</source>
+                <target>Dodaj vinyl</target>
+            </trans-unit>
+            <trans-unit id="name_tag_list">
+                <source>name_tag_list</source>
+                <target>Tagi</target>
+            </trans-unit>
+            <trans-unit id="label_vinyl">
+                <source>label_vinyl</source>
+                <target>Vinyle</target>
+            </trans-unit>
+            <trans-unit id="label_vinyl_title">
+                <source>label_vinyl_title</source>
+                <target>Nazwa vinyla</target>
+            </trans-unit>
+            <trans-unit id="name_tag_details">
+                <source>name_tag_details</source>
+                <target>Szczegóły taga</target>
+            </trans-unit>
+            <trans-unit id="name_tag_edit">
+                <source>name_tag_edit</source>
+                <target>Edytuj tag</target>
+            </trans-unit>
+            <trans-unit id="title_tag_delete">
+                <source>title_tag_delete</source>
+                <target>Usuń tag</target>
+            </trans-unit>
+            <trans-unit id="name_tag_create">
+                <source>name_tag_create</source>
+                <target>Utwórz tag</target>
+            </trans-unit>
+
+            <trans-unit id="edit_password">
+                <source>edit_password</source>
+                <target>edytuj hasło</target>
+            </trans-unit>
+            <trans-unit id="password">
+                <source>password</source>
+                <target>hasło</target>
+            </trans-unit>
+            <trans-unit id="admin_password">
+                <source>admin_password</source>
+                <target>hasło administratora</target>
+            </trans-unit>
+            <trans-unit id="Repeat Password">
+                <source>Repeat Password</source>
+                <target>powtórz hasło</target>
+            </trans-unit>
+            <trans-unit id=" Password ">
+                <source>Password</source>
+                <target>hasło</target>
+            </trans-unit>
+            <trans-unit id="register ">
+                <source>register</source>
+                <target> Zarejestruj się </target>
+            </trans-unit>
+            <trans-unit id=" Plain password ">
+                <source>Plain password</source>
+                <target>Podaj hasło</target>
+            </trans-unit>
+            <trans-unit id="Agree terms">
+                <source> Agree terms</source>
+                <target> Wyrażam zgodę na warunki </target>
+            </trans-unit>
+
+
+            <trans-unit id="edit_email">
+                <source>edit_email</source>
+                <target>edytuj e-mail </target>
+            </trans-unit>
+            <trans-unit id="email_edit">
+                <source>email_edit</source>
+                <target>Edytuj mail</target>
+            </trans-unit>
+
+
+            <trans-unit id="message_item_not_found">
+                <source>message_item_not_found</source>
+                <target>Nie znaleziono obiektu</target>
+            </trans-unit>
+            <trans-unit id="password_edit">
+                <source>password_edit</source>
+                <target>Edycja hasła</target>
+            </trans-unit>
+            <trans-unit id="comment_list">
+                <source>comment_list</source>
+                <target>Lista komentarzy</target>
+            </trans-unit>
+            <trans-unit id="label_text">
+                <source>label_text</source>
+                <target>treść</target>
+            </trans-unit>
+            <trans-unit id="label_createdAt">
+                <source>label_createdAt</source>
+                <target>utworzono</target>
+            </trans-unit>
+            <trans-unit id="app_register">
+                <source>app_register</source>
+                <target>zarejestruj się </target>
+            </trans-unit>
+            <trans-unit id="name_tag_delete">
+                <source>name_tag_delete</source>
+                <target>usuń tag</target>
+            </trans-unit>
+            <trans-unit id="title_admin">
+                <source>title_admin</source>
+                <target> Administrator</target>
+            </trans-unit>
+
+            <trans-unit id="message.deleted_successfully">
+                <source>message.deleted_successfully</source>
+                <target>Usunięto pomyślnie</target>
+            </trans-unit>
+
+
+
+
+
         </body>
     </file>
 </xliff>
