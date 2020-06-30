@@ -84,9 +84,6 @@ class Tag
         return $this->id;
     }
 
-
-
-
     /**
      * Getter for Title.
      *

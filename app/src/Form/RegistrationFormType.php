@@ -1,5 +1,8 @@
 <?php
 
+/**
+ *  Registration form type
+ */
 namespace App\Form;
 
 use App\Entity\User;

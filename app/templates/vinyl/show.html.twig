@@ -46,7 +46,7 @@
                     <li class="list-group-item">
 
                         <div class="date">
-                            {{ comment.createdAt|date('Y/m/d') }} | <b>{{ comment.author.email }}</b>
+                            {{ comment.createdAt|format_date('short')}} | <b>{{ comment.author.email }}</b>
                         </div>
                         <div class="comment">
                             {{ comment.text }}<br>

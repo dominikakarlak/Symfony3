@@ -18,8 +18,6 @@
                 <source>label_content</source>
                 <target>Zawartość</target>
             </trans-unit>
-
-
             <trans-unit id="message_empty_list">
                 <source>message_empty_list</source>
                 <target>Pusta lista.</target>
@@ -104,12 +102,10 @@
                 <source>edit</source>
                 <target>edytuj</target>
             </trans-unit>
-
             <trans-unit id="label_tags">
                 <source>label_tags</source>
                 <target>tag</target>
             </trans-unit>
-
             <trans-unit id="comment_create">
                 <source>comment_create</source>
                 <target>Stwórz komentarz</target>
@@ -122,12 +118,10 @@
                 <source>comment_delete</source>
                 <target>Usuń komentarz</target>
             </trans-unit>
-
             <trans-unit id="title_vinyl_delete">
                 <source>title_vinyl_delete</source>
                 <target>usuń vinyl</target>
             </trans-unit>
-
             <trans-unit id="action_save">
                 <source>action_save</source>
                 <target>zapisz</target>
@@ -136,7 +130,6 @@
                 <source>title_vinyl_edit</source>
                 <target>edytuj vinyl</target>
             </trans-unit>
-
             <trans-unit id="name_category_details">
                 <source>name_category_details</source>
                 <target>Szczegóły gatunku</target>
@@ -181,8 +174,6 @@
                 <source>name_category_edit</source>
                 <target>Edytuj gatunek</target>
             </trans-unit>
-
-
             <trans-unit id="label_none">
                 <source>label_none</source>
                 <target>puste pole</target>
@@ -219,7 +210,6 @@
                 <source>name_tag_create</source>
                 <target>Utwórz tag</target>
             </trans-unit>
-
             <trans-unit id="edit_password">
                 <source>edit_password</source>
                 <target>edytuj hasło</target>
@@ -248,12 +238,6 @@
                 <source>Plain password</source>
                 <target>Podaj hasło</target>
             </trans-unit>
-            <trans-unit id="Agree terms">
-                <source> Agree terms</source>
-                <target> Wyrażam zgodę na warunki </target>
-            </trans-unit>
-
-
             <trans-unit id="edit_email">
                 <source>edit_email</source>
                 <target>edytuj e-mail </target>
@@ -262,8 +246,6 @@
                 <source>email_edit</source>
                 <target>Edytuj mail</target>
             </trans-unit>
-
-
             <trans-unit id="message_item_not_found">
                 <source>message_item_not_found</source>
                 <target>Nie znaleziono obiektu</target>
@@ -296,16 +278,10 @@
                 <source>title_admin</source>
                 <target> Administrator</target>
             </trans-unit>
-
             <trans-unit id="message.deleted_successfully">
                 <source>message.deleted_successfully</source>
                 <target>Usunięto pomyślnie</target>
             </trans-unit>
-
-
-
-
-
         </body>
     </file>
 </xliff>

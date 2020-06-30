@@ -28,7 +28,7 @@
                 <tr>
                     <td>{{ comment.id }}</td>
                     <td>{{ comment.text }}</td>
-                    <td>{{ comment.createdAt|date('Y/m/d')  }}</td>
+                    <td>{{ comment.createdAt|format_date('long')  }}</td>
                     <td>
                         {%  for vinyls in comment.vinyls %}
                             {{ vinyl.title}}

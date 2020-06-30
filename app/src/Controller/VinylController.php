@@ -166,9 +166,9 @@ class VinylController extends AbstractController
     /**
      * Delete action.
      *
-     * @param \Symfony\Component\HttpFoundation\Request $request        HTTP request
-     * @param \App\Entity\Vinyl                          $vinyl         Vinyl entity
-     * @param \App\Repository\VinylRepository            $vinylRepository Vinyl repository
+     * @param \Symfony\Component\HttpFoundation\Request $request         HTTP request
+     * @param \App\Entity\Vinyl                         $vinyl           Vinyl entity
+     * @param \App\Repository\VinylRepository           $vinylRepository Vinyl repository
      *
      * @return \Symfony\Component\HttpFoundation\Response HTTP response
      *

@@ -77,7 +77,17 @@ class VinylRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
+            ->select(
+                'partial vinyl.{id, title, year, description}',
+                'partial category.{id, name}',
+                'partial tags.{id, title}',
+                'partial author.{id, name}'
+            )
+            ->join('vinyl.category', 'category')
+            ->join('vinyl.author', 'author')
+            ->leftJoin('vinyl.tags', 'tags')
             ->orderBy('vinyl.year', 'DESC');
+
     }
 
     /**

@@ -51,7 +51,10 @@ class AuthorRepository extends ServiceEntityRepository
     public function queryAll(): QueryBuilder
     {
         return $this->getOrCreateQueryBuilder()
-            ->orderBy('author.id', 'DESC');
+            ->orderBy('author.id', 'DESC')
+            ->select('author', 'partial vinyls.{id}')
+            ->join('author.vinyls', 'vinyls');
+
     }
 
     /**

@@ -140,7 +140,7 @@ class User implements UserInterface
      *
      * @return string User name
      */
-    public function getUsername(): string
+    public function getUsername(): ?string
     {
         return (string) $this->email;
     }
@@ -178,7 +178,7 @@ class User implements UserInterface
      *
      * @return string|null Password
      */
-    public function getPassword(): string
+    public function getPassword(): ?string
     {
         return (string) $this->password;
     }

@@ -31,7 +31,7 @@
                 <tr>
                     <td>{{ vinyl.id }}</td>
                     <td>{{ vinyl.title }}</td>
-                    <td>{{ vinyl.year }}</td>
+                    <td>{{ vinyl.year|format_date('full') }}</td>
                     <td>{{ vinyl.description }}</td>
                     <td>{{ vinyl.category.name }}</td>
                     <td>{{ vinyl.author.name }}</td>

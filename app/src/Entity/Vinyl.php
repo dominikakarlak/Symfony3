@@ -51,7 +51,7 @@ class Vinyl
     private $title;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="vinyls")
+     * @ORM\ManyToOne(targetEntity=Category::class, inversedBy="vinyls", fetch="EXTRA_LAZY",)
      * @ORM\JoinColumn(nullable=false)
      */
     private $category;
@@ -83,7 +83,11 @@ class Vinyl
     private $year;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Author::class, inversedBy="vinyls")
+     * @ORM\ManyToOne(
+     *     targetEntity=Author::class,
+     *     inversedBy="vinyls"
+     *
+     * )
      * @ORM\JoinColumn(nullable=false)
      *
      *
@@ -100,7 +104,8 @@ class Vinyl
      * @ORM\ManyToMany(
      *     targetEntity="App\Entity\Tag",
      *     inversedBy="vinyls",
-     *     orphanRemoval=true
+     *     orphanRemoval=true,
+     *     fetch="EXTRA_LAZY",
      * )
      * @ORM\JoinTable(name="vinyls_tags")
      */
@@ -160,7 +165,7 @@ class Vinyl
      *
      * @return Category|null
      */
-    public function getCategory(): ?Category
+    public function getCategory()
     {
         return $this->category;
     }
